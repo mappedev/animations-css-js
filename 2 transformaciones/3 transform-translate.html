@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformación Rotación</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: Arial;
+        perspective: 200px;
+        /* perspective-origin: center; */
+        /* perspective-origin: top; */
+        /* perspective-origin: bottom; */
+        /* perspective-origin: left; */
+        /* perspective-origin: right; */
+        /* perspective-origin: top left; */
+        /* perspective-origin: top right; */
+        /* perspective-origin: bottom left; */
+        /* perspective-origin: bottom right; */
+      }
+
+      .container {
+        border: 1px solid blue;
+      }
+
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: #7dc900;
+        margin: 20px;
+        transition: 300ms;
+      }
+
+      .container:hover .cuadrado {
+        /* transform: translate(100px); */
+        /* transform: translate(100px, 100px); */
+        /* transform: translateX(100px); */
+        /* transform: translateZ(100px); */
+        transform: translate3d(-100px, -100px, -100px);
+      }
+
+      /*
+        transform: translate(100px); Si se declara de esta manera, predeterminadamente el elemento se moverá hacia la derecha del eje x
+        transform: translate(100px, 100px); De esta forma estamos indicando que tanto el eje x (primer valor), como el eje y (segundo valor) tienen 100px.
+        transform: translateX(100px); Forma de indicar más explícito el movimiento.
+        transform: translateZ(100px); Forma de acercar el elemento. Como el canvas es 2d, no hay forma de ver cuando este elemento se acerca. La forma de ver este cambio, es agregando una perspectiva a uno de los elementos padre: perspective: 200px;
+
+        A perspective se le puede configurar punto de origen, que por defecto empieza en el centro: perspective-origin: center;
+        Se puede configurar más explicitamente cuál será el punto de origen de la perspectiva: perspective-origin: bottom right;
+
+        Transform tambien puede ser usado en 3d: transform: translate3d(100px, -100px, 100px);
+        Transform en 3d tambien podemos hacer que el eje de profundidad z se aleje aplicando un valor negativo en él: transform: translate3d(100px, -100px, -100px);
+        transform: translate3d(x, y, z) recibe primero x, luego y y por último la profundidad z.
+
+        DATO PODEROSO: transform-style: preserve-3d; línea necesario para su funcionamiento en firefox.
+       */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado">Hola Mundo</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creando un modal</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 1.2s ease-in;
+        opacity: 0;
+        visibility: hidden;
+        /*
+          Con la propiedad opacity, podemos ocultar o mostrar un elemento: opacity: "0";
+          Con la propiedad "visibility", puedes controlar que sus elementos sean o no clickeables: visibility: hidden;
+          Con transition, podemos hacer que los cambios duren un poco: transition: 1s;
+        */
+      }
+
+      .overlay.isActive {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
+        max-width: 500px;
+        background-color: white;
+        animation: modalIn 1s forwards;
+        padding: 2em;
+        border-radius: 1em;
+        text-align: center;
+        display: grid;
+        grid-template-rows: repeat(4, auto);
+        gap: 10px;
+      }
+
+      .buttons {
+        text-align: center;
+        padding: 0.6em 0.8em 0.8em;
+        border: none;
+        color: white;
+        background-color: lightgray;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: inset 0 -0.2em rgba(0, 0, 0, 0.2);
+        outline: none;
+        transition: 200ms;
+        will-change: transform;
+      }
+
+      .buttons:active {
+        transform: scale(0.9);
+      }
+      .cancel {
+        text-align: right;
+      }
+
+      .buttons.button-primary {
+        background-color: #7dc800;
+      }
+
+      .buttons.button-warning,
+      .buttons.button-cancel {
+        background-color: #ff463b;
+      }
+
+      .buttons.button-cancel {
+        font-weight: bold;
+        font-size: 1em;
+      }
+
+      @keyframes modalIn {
+        0% {
+          transform: translateY(-3000px);
+        }
+        60% {
+          transform: translateY(50px);
+        }
+        75% {
+          transform: translateY(-20px);
+        }
+        90% {
+          transform: translateY(10px);
+        }
+      }
+
+      @keyframes modalOut {
+        0% {
+          transform: translateY(10px);
+        }
+        25% {
+          transform: translateY(-20px);
+        }
+        40% {
+          transform: translateY(50px);
+        }
+        90% {
+          transform: translateY(-3000px);
+        }
+        100% {
+          transform: translateY(-3000px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img src="images/platzi.png" alt="platzi" id="img-click" />
+    <div id="overlay" class="overlay isActive">
+      <div id="modal" class="modal">
+        <div class="cancel">
+          <button id="btnCancelModal" class="buttons button-cancel">X</button>
+        </div>
+        <h1>¡Atención!</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod quam ea
+          corrupti, atque necessitatibus facilis.
+        </p>
+        <p>¿Te gustó?</p>
+        <div>
+          <button id="btnYesModal" class="buttons button-primary">SI</button>
+          <button id="btnNoModal" class="buttons button-warning">NO</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const overlay = document.getElementById("overlay");
+      const modal = document.getElementById("modal");
+      const hideBtnCancel = document.getElementById("btnCancelModal");
+      const hideBtnPrimary = document.getElementById("btnYesModal");
+      const hideBtnWarning = document.getElementById("btnNoModal");
+      const imgBtn = document.getElementById("img-click");
+
+      function showModal(event) {
+        overlay.classList.add("isActive");
+        modal.style.animation = "modalIn 1s forwards";
+      }
+
+      function hideModal(event) {
+        modal.style.animation = "modalOut 1s forwards";
+        // Para remover clases:
+        overlay.classList.remove("isActive");
+        // Para agregar clases:
+        // overlay.classList.add("isActive");
+      }
+
+      imgBtn.addEventListener("click", showModal);
+      hideBtnCancel.addEventListener("click", hideModal);
+      hideBtnPrimary.addEventListener("click", hideModal);
+      hideBtnWarning.addEventListener("click", hideModal);
+      overlay.addEventListener("click", (event) => {
+        // Verficamos que realmente se clickee el overlay y no el modal. Esto debido que había un bug, que al momento de clickear el modal con el overlay activo, se cerraba...
+        if (event.target.className === "overlay isActive") {
+          hideModal();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interacción</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .canasta {
+        border: 1px blue solid;
+        height: 100px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .pelota {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transition: 1s;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      .pelota.a {
+        background-color: blue;
+        left: 0;
+      }
+
+      .pelota.b {
+        background-color: red;
+        right: 0;
+      }
+
+      /* .canasta:hover .pelota {
+        width: 200px;
+        height: 200px;
+      } */
+
+      .canasta:hover .pelota.a {
+        left: calc(50% - 100px);
+      }
+
+      .canasta:hover .pelota.b {
+        right: calc(50% - 100px);
+      }
+
+      /*
+        .canasta:hover .pelota {} Esto quiere decir que cuando se haga hover en canasta, .pelota tendrá una modificación.
+       */
+    </style>
+  </head>
+  <body>
+    <div class="canasta">
+      <div class="pelota a">Hola</div>
+      <div class="pelota b">Mundo</div>
+    </div>
+  </body>
+</html>

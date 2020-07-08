@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reto 1</title>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 200px;
+      }
+
+      .triangulo-azul {
+        display: none;
+        width: 0;
+        height: 0;
+        border-top: 100px solid blue;
+        border-right: 100px solid transparent;
+        border-bottom: 100px solid transparent;
+        position: absolute;
+        top: calc(50% - 100px);
+        left: calc(50% - 100px);
+      }
+
+      .triangulo-rojo {
+        display: none;
+        width: 0;
+        height: 0;
+        border-top: 100px solid red;
+        border-left: 100px solid transparent;
+        border-bottom: 100px solid transparent;
+        position: absolute;
+        top: calc(50% - 100px);
+        right: calc(50% - 100px);
+      }
+
+      .triangulo-verde {
+        display: none;
+        width: 0;
+        height: 0;
+        border-top: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 100px solid green;
+        position: absolute;
+        bottom: calc(50% - 100px);
+        left: calc(50% - 100px);
+      }
+
+      .triangulo-amarillo {
+        display: none;
+        width: 0;
+        height: 0;
+        border-top: 100px solid transparent;
+        border-left: 100px solid transparent;
+        border-bottom: 100px solid yellow;
+        position: absolute;
+        bottom: calc(50% - 100px);
+        right: calc(50% - 100px);
+      }
+
+      .triangulo {
+        display: block;
+        animation-name: visible, rotar;
+        animation-duration: 250ms, 1s;
+        animation-iteration-count: 20, infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: backwards, forwards;
+      }
+
+      .triangulo:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes visible {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes rotar {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes estirar {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(2, 2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="triangulo-azul" class="triangulo triangulo-azul"></div>
+    <div id="triangulo-rojo" class="triangulo triangulo-rojo"></div>
+    <div id="triangulo-verde" class="triangulo triangulo-verde"></div>
+    <div id="triangulo-amarillo" class="triangulo triangulo-amarillo"></div>
+
+    <script>
+      const trianguloAzul = document.getElementById("triangulo-azul");
+      const trianguloRojo = document.getElementById("triangulo-rojo");
+      const trianguloVerde = document.getElementById("triangulo-verde");
+      const trianguloAmarillo = document.getElementById("triangulo-amarillo");
+
+      trianguloAzul.addEventListener("animationend", (event) => {
+        if (event.animationName === "visible") {
+          trianguloAzul.style.animationName = "estirar";
+          trianguloAzul.style.animationDuration = "1s";
+          trianguloAzul.style.animationIterationCount = "infinite";
+        }
+      });
+
+      trianguloRojo.addEventListener("animationend", (event) => {
+        if (event.animationName === "visible") {
+          trianguloRojo.style.animationName = "estirar";
+          trianguloRojo.style.animationDuration = "1s";
+          trianguloRojo.style.animationIterationCount = "infinite";
+        }
+      });
+
+      trianguloVerde.addEventListener("animationend", (event) => {
+        if (event.animationName === "visible") {
+          trianguloVerde.style.animationName = "estirar";
+          trianguloVerde.style.animationDuration = "1s";
+          trianguloVerde.style.animationIterationCount = "infinite";
+        }
+      });
+
+      trianguloAmarillo.addEventListener("animationend", (event) => {
+        if (event.animationName === "visible") {
+          trianguloAmarillo.style.animationName = "estirar";
+          trianguloAmarillo.style.animationDuration = "1s";
+          trianguloAmarillo.style.animationIterationCount = "infinite";
+        }
+      });
+    </script>
+  </body>
+</html>

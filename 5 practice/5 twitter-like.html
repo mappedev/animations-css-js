@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter Like</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .like {
+        cursor: pointer;
+        /* width: 100px;
+        height: 100px; */
+        width: 50px;
+        height: 50px;
+        background-image: url("images/heart.png");
+        /* Tamaño original del like de twitter, la mitad de la imágen (2900px 100px): */
+        background-size: 1450px 50px;
+        /* 2900 / 29 = 100px */
+        /* background-position: -2800px; */
+      }
+
+      .like.isLiked {
+        animation: like 800ms steps(28) forwards;
+      }
+
+      @keyframes like {
+        from {
+          background-position: 0;
+        }
+        to {
+          /* background-position: -2800px; */
+          background-position: right;
+          /* background-position: right; está genial porque indicas en cada step hacia que dirección debe moverse. Y también porque evita realizar calculos, por ejemplo al redimensionar la imágen... Cosa que hicimos bajandola a un 50% 1450px 50px */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tweet-box">
+      <div id="like" class="like"></div>
+    </div>
+
+    <script>
+      const like = document.getElementById("like");
+
+      like.addEventListener("click", (event) => {
+        // like.classList.add("isLiked");
+        like.classList.toggle("isLiked");
+      });
+    </script>
+  </body>
+</html>

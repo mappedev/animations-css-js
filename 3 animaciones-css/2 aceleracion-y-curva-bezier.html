@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformación Punto de Origen</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: Arial;
+        perspective: 200px;
+      }
+
+      .container {
+        border: 1px solid blue;
+        width: 100%;
+      }
+
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: #7dc900;
+        margin: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* transition: 300ms; */
+        transform-origin: 25% 25%;
+        animation-name: cuadrado;
+        animation-duration: 1s;
+        /* animation-delay: 1s; */
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        /* animation-fill-mode: forwards; */
+        /* animation-play-state: paused; */
+        /* animation-timing-function: ease; */
+        /* animation-timing-function: ease-in; */
+        /* animation-timing-function: ease-out; */
+        /* animation-timing-function: ease-in-out; */
+        /* animation-timing-function: linear; */
+        /* animation-timing-function: steps(5); */
+        animation-timing-function: cubic-bezier(1, 0, 0, 1);
+        position: relative;
+      }
+
+      @keyframes cuadrado {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: calc(100% - 240px);
+        }
+      }
+
+      .container:hover .cuadrado {
+        animation-play-state: paused;
+      }
+
+      /*
+        animation-timing-function: steps(10); con esto indicamos cuantos frames va a ver por 1 segundo. Frames son las veces en las que se repite una imagen por fracción de segundo.
+        animation-timing-function: cubic-bezier(1, 1, 1, 1); nos permite de una forma más personalizada modificar las aceleraciones que tendrá la animación.
+        https://cubic-bezier.com/ en esta página podemos personalizar más facilmente nuestra curva de bezier.
+      */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado">Hola Mundo</div>
+    </div>
+  </body>
+</html>

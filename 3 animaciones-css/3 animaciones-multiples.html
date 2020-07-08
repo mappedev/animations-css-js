@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformación Punto de Origen</title>
+    <style>
+      body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: Arial;
+        perspective: 200px;
+      }
+
+      .container {
+        border: 1px solid blue;
+        width: 100%;
+      }
+
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: #7dc900;
+        margin: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* transition: 300ms; */
+        transform-origin: 25% 25%;
+        animation-name: cuadrado, rebote; /* rebote; */
+        animation-duration: 3s, 300ms;
+        /* animation-delay: 1s; */
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        /* animation-fill-mode: forwards; */
+        /* animation-play-state: paused; */
+        /* animation-timing-function: ease; */
+        /* animation-timing-function: ease-in; */
+        /* animation-timing-function: ease-out; */
+        /* animation-timing-function: ease-in-out; */
+        /* animation-timing-function: linear; */
+        /* animation-timing-function: steps(5); */
+        /* animation-timing-function: cubic-bezier(1, 0, 0, 1); */
+        animation-timing-function: linear, ease-in;
+        position: relative;
+      }
+
+      @keyframes cuadrado {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: calc(100% - 240px);
+        }
+      }
+
+      @keyframes rebote {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(100px) scale(1, 0.75);
+        }
+      }
+
+      .container:hover .cuadrado {
+        animation-play-state: paused;
+      }
+
+      /*
+        from = 0%
+        to = 100%
+
+        La forma de colocar múltiples animaciones es agregando los valores en cada propiedad separados por ",".
+      */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado">Hola Mundo</div>
+    </div>
+  </body>
+</html>

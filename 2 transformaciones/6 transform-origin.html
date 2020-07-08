@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformación Punto de Origen</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: Arial;
+        perspective: 200px;
+      }
+
+      .container {
+        border: 1px solid blue;
+      }
+
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: #7dc900;
+        margin: 20px;
+        transition: 300ms;
+        /* transform-origin: 50% 50%; */
+        /* transform-origin: top; */
+        /* transform-origin: bottom; */
+        /* transform-origin: left; */
+        /* transform-origin: right; */
+        /* transform-origin: right top; */
+        /* transform-origin: right bottom; */
+        /* transform-origin: left top; */
+        /* transform-origin: left bottom; */
+        transform-origin: 25% 25%;
+      }
+
+      .container:hover .cuadrado {
+        /* transform: rotateX(45deg); */
+        transform: rotateY(45deg);
+      }
+
+      /*
+        transform-origin: 50% 50%; por defecto viene de esa manera, osea que el elemento empezará su transformación des de el centro.
+        transform-origin: x y; el primer valor es para x y el segundo para y.
+
+        transform: rotateY(45deg); transform: rotateX(45deg); Dependiendo de la propiedad que queramos alterar (x o y) se tomará su punto de origen.
+
+        Si queremos que el punto de transformación esté en una esquina, debemos usar dar valor a la dos propiedades, tanto x como y: transform-origin: right top; En este caso ya no es necesario modificar x o y si no z: transform: rotateZ(-45deg);
+
+        Si deseamos que los valores no estén en las esquinas si no en un lugar en específico, podemos usar los valores %: transform-origin: 75% 75%;
+       */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado">Hola Mundo</div>
+    </div>
+  </body>
+</html>

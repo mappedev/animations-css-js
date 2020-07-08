@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformación Punto de Origen</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: Arial;
+        perspective: 200px;
+      }
+
+      .container {
+        border: 1px solid blue;
+        width: 100%;
+      }
+
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: #7dc900;
+        margin: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* transition: 300ms; */
+        transform-origin: 25% 25%;
+        animation-name: cuadrado;
+        animation-duration: 2s;
+        /* animation-delay: 1s; */
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in;
+        /* animation-timing-function: cubic-bezier(1, 1, 1, 1); */
+        animation-direction: alternate;
+        /* animation-fill-mode: forwards; */
+        /* animation-play-state: paused; */
+        position: relative;
+      }
+
+      @keyframes cuadrado {
+        0% {
+          /* opacity: 1; */
+          left: 0;
+        }
+        100% {
+          /* opacity: 0; */
+          left: calc(100% - 240px);
+        }
+      }
+
+      .container:hover .cuadrado {
+        animation-play-state: paused;
+      }
+
+      /*
+        Para animar los elementos en un momento predeterminado, hemos usado el hover, pero esto lo podemos modificar para que se realicen cuando se aperture la página, se seleccione algún elemento, etc:
+
+        SINTAXIS PARA ANIMAR ELEMENTOS EN LA WEB:
+        1. Para una animación básica, primero debemos indicar el nombre de la animación: animation-name: cuadrado;
+        2. Luego, debemos indicar su duración:   animation-duration: 300ms;
+        3. Ahora lo usaremos, para esto debemos usar un keyword junto con el nombre de la animación: @keyframes cuadrado {}
+        4. Dentro de este @keyframes cuadrado , podemos hacer las modificaciones que tendrá el elemento, en este caso cambiará la opacidad durante su duración y al final (100%) será invisible.
+        Luego de esta duración de animación, el elemento se ve reflejado.
+        Esto es lo básico de una animación, existen otras propiedades que tambien tiene animation como:
+        animation-delay: duración antes de su ejecución.
+        animation-iteration-count: cantidad de veces que se repetirá la animación (se puede poner infinito con el valor: infinite).
+        animation-timing-function: para cambiar el suavizado de nuestra animación. Por defecto está en ease.
+        animation-timing-function: cubic-bezier(1, 1, 1, 1); esto nos permite modificar a detalle nuestro suavizado, cuando los 4 valores están en 1 por defecto es linear.
+        animation-direction: para indicar desde donde comenzará mi animación. Por defecto está en normal. Con el valor de alternate, podemos hacer que la animación haga su función y su inverso al terminar. En nuestro caso se haría invisible y visible. IMPORTANTE PARA HACER FADES.
+        El valor alternate también puede hacerse manualmente de la siguiente manera:
+        @keyframes cuadrado {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        Pero el intercambio se haría de manera brusca, por tal razón es mejor el alternate.
+        animation-fill-mode: indica cuál va a ser el relleno que tendrá la animación. Cuál va a ser el valor final que tendrá la animación cuando se ejecute.
+        animation-play-state: con esto se puede pausar la animación. Por defecto el valor es running.
+       */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado">Hola Mundo</div>
+    </div>
+  </body>
+</html>

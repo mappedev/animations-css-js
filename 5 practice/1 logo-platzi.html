@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logo de platzi loader</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #234050;
+      }
+
+      .platzi {
+        width: 100px;
+        height: 100px;
+        transform: rotate(45deg);
+      }
+
+      .platzi-element {
+        width: 100%;
+        box-sizing: border-box;
+        border: 20px solid #97c93e;
+      }
+
+      .platzi-top {
+        width: 80%;
+        height: 65%;
+        border-bottom: none;
+        border-radius: 20px 20px 0 0;
+
+        /* 1px que no permite la unión de la parte de arriba y la parte de abajo. Es un error de css y se solventa agregando 1px al top para que se una. */
+        position: relative;
+        top: 1px;
+      }
+
+      .platzi-bottom {
+        height: 35%;
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="platzi">
+      <div class="platzi-element platzi-top"></div>
+      <div class="platzi-element platzi-bottom"></div>
+    </div>
+  </body>
+</html>

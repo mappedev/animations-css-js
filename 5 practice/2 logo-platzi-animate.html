@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logo de platzi loader</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #234050;
+      }
+
+      .platzi {
+        width: 100px;
+        height: 100px;
+        transform: rotate(45deg);
+        animation-name: revealScaleRotate;
+        animation-duration: 3.5s;
+        animation-iteration-count: infinite;
+      }
+
+      .platzi-element {
+        width: 100%;
+        box-sizing: border-box;
+        border: 20px solid #97c93e;
+      }
+
+      .platzi-top {
+        width: 100%;
+        height: 65%;
+        border-bottom: none;
+        border-radius: 20px 20px 0 0;
+        position: relative;
+        top: 1px;
+        animation-name: dwarf;
+        animation-duration: 3.5s;
+        animation-delay: 1s;
+        animation-iteration-count: infinite;
+      }
+
+      .platzi-bottom {
+        height: 35%;
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+      }
+
+      @keyframes revealScaleRotate {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0.3) rotate(0deg);
+        }
+        30%,
+        80% {
+          opacity: 1;
+          transform: scale(1) rotate(405deg);
+        }
+      }
+
+      @keyframes dwarf {
+        0%,
+        80% {
+          width: 100%;
+        }
+        20%,
+        50% {
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="platzi">
+      <div class="platzi-element platzi-top"></div>
+      <div class="platzi-element platzi-bottom"></div>
+    </div>
+  </body>
+</html>

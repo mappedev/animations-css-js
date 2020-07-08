@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transiciones</title>
+    <style>
+      .pelota {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: blue;
+        /* transition-property: width, height; */
+        /* transition-duration: 1s; */
+        /* transition-delay: 500ms; */
+        /* transition-timing-function: ease; */
+
+        transition: width 1s 500ms ease;
+      }
+
+      .pelota.b:hover {
+        width: 200px;
+        height: 200px;
+      }
+
+      /*
+        transition es una animación de cambio.
+        transition-property: width; con esto indicamos que propiedad afectará al momento de la transición.
+        transition-property: width, height; con esto indicamos su duración.
+        transition-delay: 500ms; con esto indicamos cuanto tiempo durará antes de que ocurra la transición.
+        transition-timing-function: ease; es opcional porque viene por defecto en ease. Es una propiedad de aceleración de la transición.
+
+        Si no se le coloca la propiedad de la transición (transition-property), CSS por defecto le aplica transiciones a todos los elementos con los que se van a interactuar, es decir alto y ancho.
+
+        transition: width 1s 500ms ease; De esta forma podemos indicar todo lo anterior en una sola línea de código. Primero se le indica que propiedad va a modificar (width), luego se indica su duración (1s), luego su delay (500ms) y por último su timing function (ease).
+        Si deseamos modificar otro elemento a parte del width, separamos las indicaciones con una ",", por ejemplo:
+        transition: width 1s 500ms ease, height 1s 500ms ease;
+       */
+    </style>
+  </head>
+  <body>
+    <div class="pelota b"></div>
+  </body>
+</html>

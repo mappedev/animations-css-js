@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animación de Olas</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        height: 500px;
+        background-color: #0f9bf6;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content {
+        font-family: Arial;
+        text-align: center;
+        font-size: 2em;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .waves {
+        position: absolute;
+        /* right: 0;
+        bottom: 0;
+        left: 0;
+        height: 200px; */
+        bottom: -135px;
+        width: 100%;
+        height: 527px;
+        overflow: hidden;
+      }
+
+      .wave {
+        /* width: 100%; */
+        /* border-radius: 50%; */
+        /* background-color: rgba(0, 0, 0, 0.5); */
+        width: 2402px;
+        height: 427px;
+        background: url("images/waves.png") center bottom no-repeat;
+        position: absolute;
+        left: -180px;
+        bottom: 0;
+        animation: waveMove ease-in-out 5s infinite alternate;
+      }
+
+      .wave.a {
+        background-position: 0 -854px;
+      }
+
+      .wave.b {
+        background-position: 0 -427px;
+        animation-delay: 600ms;
+      }
+
+      .wave.c {
+        background-position: 0;
+        animation-delay: 200ms;
+      }
+
+      @keyframes waveMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-80px, 30px);
+        }
+        100% {
+          transform: translate(160px, -60px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <h1>¡Hola mundo!</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis,
+          culpa.
+        </p>
+      </div>
+      <div class="waves">
+        <div class="wave a"></div>
+        <div class="wave b"></div>
+        <div class="wave c"></div>
+      </div>
+    </div>
+  </body>
+</html>

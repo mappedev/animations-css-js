@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reto 2</title>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .element {
+        width: 250px;
+        height: 250px;
+        background-color: cadetblue;
+        opacity: 0;
+        animation-name: reveal;
+        animation-duration: 2s;
+        animation-iteration-count: 1;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes circle {
+        from {
+          border-radius: 0;
+        }
+        to {
+          border-radius: 50%;
+          background-color: darkturquoise;
+        }
+      }
+
+      @keyframes rectangule {
+        from {
+          width: 250px;
+          height: 250px;
+        }
+        to {
+          width: 500px;
+          background-color: lightskyblue;
+        }
+      }
+
+      @keyframes triangle {
+        from {
+          width: 250px;
+          height: 250px;
+        }
+        to {
+          width: 0;
+          height: 0;
+          background-color: transparent;
+          border-top: 250px solid dodgerblue;
+          border-right: 250px solid transparent;
+          border-bottom: 250px solid transparent;
+          position: absolute;
+          top: 37%;
+          left: 37%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="element" class="element"></div>
+
+    <script>
+      const element = document.getElementById("element");
+
+      element.addEventListener("animationend", (event) => {
+        console.log(event.animationName);
+
+        if (event.animationName === "reveal") {
+          element.style.opacity = "1";
+          element.style.animationName = "circle";
+          element.style.animationDuration = "2s";
+          element.style.animationTimingFunction = "linear";
+          element.style.animationIterationCount = "2";
+          element.style.webkitAnimationDirection = "alternate";
+        }
+
+        if (event.animationName === "circle") {
+          element.style.animationName = "rectangule";
+          element.style.animationDuration = "2s";
+          element.style.animationTimingFunction = "linear";
+          element.style.animationFillMode = "forwards";
+          element.style.animationIterationCount = "2";
+          element.style.webkitAnimationDirection = "alternate";
+        }
+
+        if (event.animationName === "rectangule") {
+          element.style.animationName = "triangle";
+          element.style.animationDuration = "2s";
+          element.style.animationTimingFunction = "linear";
+          element.style.animationFillMode = "forwards";
+          element.style.animationIterationCount = "2";
+          element.style.webkitAnimationDirection = "alternate";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reto 3</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tube {
+        width: 600px;
+        border: 2px solid green;
+        border-radius: 100px;
+        padding: 1px 0;
+      }
+
+      .pelota {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50%;
+      }
+
+      .adjust {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .buttons {
+        text-align: center;
+      }
+
+      .btn {
+        text-align: center;
+        background-color: #7dc800;
+        padding: 0.6em 0.8em 0.8em;
+        border: none;
+        color: white;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: inset 0 -0.2em rgba(0, 0, 0, 0.2);
+        outline: none;
+        transition: 200ms;
+        will-change: transform;
+      }
+
+      .display {
+        display: flex;
+        align-content: center;
+        justify-content: flex-end;
+        margin-left: 50px;
+      }
+
+      .display-text {
+        height: 50px;
+        width: 40px;
+        background-color: #7dc800;
+        margin-right: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .btn:active {
+        transform: scale(0.9);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="tube">
+        <div id="pelota" class="pelota"></div>
+      </div>
+      <div class="adjust">
+        <div class="buttons">
+          <button id="play" class="btn">Pause</button>
+          <button id="stop" class="btn">Stop</button>
+          <button id="reverse" class="btn">Reverse</button>
+          <button id="low" class="btn"><<</button>
+          <button id="speed" class="btn">>></button>
+        </div>
+        <div class="display">
+          <h2 id="display-text" class="display-text">1</h2>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const pelota = document.getElementById("pelota");
+
+      const animation = pelota.animate(
+        [
+          {
+            transform: "translateX(0)",
+          },
+          {
+            transform: "translateX(500px)",
+          },
+        ],
+        {
+          duration: 1000,
+          delay: 200,
+          direction: "alternate",
+          easing: "linear",
+          iterations: Infinity,
+          fill: "forwards",
+        }
+      );
+
+      const pausePlayBtn = document.getElementById("play");
+      const pauseBtn = document.getElementById("pause");
+      const stopBtn = document.getElementById("stop");
+      const reverseBtn = document.getElementById("reverse");
+      const lowBtn = document.getElementById("low");
+      const speedBtn = document.getElementById("speed");
+      const display = document.getElementById("display-text");
+
+      pausePlayBtn.addEventListener("click", (event) => {
+        if (animation.playState === "running") {
+          animation.pause();
+          pausePlayBtn.textContent = "Play";
+        } else {
+          animation.play();
+          pausePlayBtn.textContent = "Pause";
+        }
+      });
+
+      stopBtn.addEventListener("click", (event) => {
+        animation.cancel();
+      });
+
+      reverseBtn.addEventListener("click", (event) => {
+        animation.reverse();
+      });
+
+      lowBtn.addEventListener("click", (event) => {
+        animation.playbackRate -= 0.2;
+        display.textContent = animation.playbackRate.toFixed(1);
+      });
+
+      speedBtn.addEventListener("click", (event) => {
+        animation.playbackRate += 0.2;
+        display.textContent = animation.playbackRate.toFixed(1);
+      });
+    </script>
+  </body>
+</html>

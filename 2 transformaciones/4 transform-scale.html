@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformación Rotación</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: Arial;
+        perspective: 200px;
+      }
+
+      .container {
+        border: 1px solid blue;
+      }
+
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: #7dc900;
+        margin: 20px;
+        transition: 300ms;
+      }
+
+      .container:hover .cuadrado {
+        transform: scale(0);
+        transform: scale(2);
+        transform: scale(2, 0.5);
+      }
+
+      /*
+        transform: scale(); cambia el tamaño del elemento de una forma vectorial, osea que no pierde la resolución. Sus valores son del 0 al 1, donde 0 es 0% del elemento y 1 es el 100% del elemento.
+        transform: scale(2, 0.5); de esta manera podemos cambiar los valores del eje x y y.
+        transform: scale(x, y); primer valor x, segundo valor y.
+       */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado">Hola Mundo</div>
+    </div>
+  </body>
+</html>

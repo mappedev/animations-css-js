@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript element.animate</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        width: 600px;
+        border: 1px solid red;
+      }
+
+      .pelota {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="pelota" class="pelota"></div>
+    </div>
+
+    <script>
+      const pelota = document.getElementById("pelota");
+
+      pelota.animate(
+        [
+          // from
+          {
+            transform: "translateX(0)",
+          },
+          // to
+          {
+            transform: "translateX(500px)",
+          },
+        ],
+        {
+          duration: 1000,
+          delay: 1000,
+          // direction: "alternate",
+          easing: "linear",
+          iterations: Infinity,
+          fill: "forwards",
+          iterationStart: 0.5,
+          // endDelay: 5000,
+        }
+      );
+
+      // element.animate(keyframes = [], options = {})
+      // keyframes es parecido al css, primera llave "from", segunda llave "to".
+      // options son todas las configuraciones que va a llevar la animación.
+
+      // iterationStart sirve para indicar en que parte del proceso de la animación va a empezar (from -> to). Sus valores son del 0 a 1, donde 0 es 0% (inicio) y 1 es 100% (final).
+      // endDelay sirve para indicar el tiempo en milisegundos que el elemento debe esperar luego de que su animación acaba.
+      // iterations, cuando se quiere llamar al valor infinito, se debe colocar el valor: Infinity .
+    </script>
+  </body>
+</html>

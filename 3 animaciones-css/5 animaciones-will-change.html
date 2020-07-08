@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimizar Render con will-change y developer tools</title>
+    <style>
+      body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: Arial;
+        perspective: 200px;
+      }
+
+      .container {
+        border: 1px solid blue;
+        width: 100%;
+      }
+
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* animation-name: cuadrado, rebote; */
+        animation-duration: 3s, 300ms;
+        animation-iteration-count: infinite, 20;
+        animation-direction: alternate;
+        animation-timing-function: linear, ease-in;
+        position: relative;
+        transition: 3s;
+        will-change: opacity, transform;
+      }
+
+      @keyframes cuadrado {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: calc(100% - 240px);
+        }
+      }
+
+      @keyframes escalera {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(500px);
+        }
+      }
+
+      @keyframes rebote {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(100px) scale(1, 0.75);
+        }
+      }
+
+      .container:hover .cuadrado {
+        animation-play-state: paused;
+      }
+
+      .cuadrado:hover {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado" id="cuadrado">Hola Mundo</div>
+    </div>
+
+    <script>
+      const $cuadrado = document.getElementById("cuadrado");
+
+      $cuadrado.addEventListener("animationend", (event) => {
+        console.log(event.animationName);
+        if (event.animationName === "rebote") {
+          $cuadrado.style.animationName = "cuadrado escalera";
+          $cuadrado.style.animationDuration = "3s";
+        }
+      });
+
+      // Existen varios eventos que podemos poner en JavaScript en un addEventListener como: animationend, animationstart, animatioiteration, etc. Esto es genial porque se pueden encadenar varias animaciones.
+    </script>
+  </body>
+</html>
